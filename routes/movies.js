@@ -4,7 +4,7 @@ var Movie = require('../models/movie');
 
 
 
-router.route('/movies')
+router.route('/')
 
   .get(function(req, res) {
 
@@ -26,13 +26,13 @@ router.route('/movies')
       if (err) {
         return res.send(err);
       }
-      res.send({ message: 'Movie Added' });
+      res.json({ message: "Movie successfully added!", movie });
     });
 
   });
 
 
-router.route('/movies/:id')
+router.route('/:id')
 
   .put(function(req,res){
     Movie.findOne({ _id: req.params.id }, function(err, movie) {
@@ -50,7 +50,7 @@ router.route('/movies/:id')
           return res.send(err);
         }
 
-        res.json({ message: 'Movie updated!' });
+        res.json({ message: 'Movie updated!', movie });
       });
     });
   })
@@ -68,12 +68,12 @@ router.route('/movies/:id')
   .delete(function(req, res) {
   Movie.remove({
     _id: req.params.id
-  }, function(err, movie) {
+  }, function(err, result) {
     if (err) {
       return res.send(err);
     }
 
-    res.json({ message: 'Successfully deleted' });
+    res.json({ message: 'Movie successfully deleted!', result });
   });
 });
 
