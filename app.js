@@ -5,6 +5,9 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
+let config = require('config');
+
+
 
 // Routes
 let movies = require('./routes/movies');
@@ -12,8 +15,8 @@ let movement = require('./routes/movement');
 
 //connect to our database
 //Ideally you will obtain DB details from a config file
-let dbName = 'movieDB';
-let connectionString = 'mongodb://localhost:27017/' + dbName;
+let dbName = 'routine';
+let connectionString = config.DBHost + dbName;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(connectionString);

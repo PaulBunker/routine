@@ -105,15 +105,15 @@ describe('Movement', () => {
        let movement = new Movement({
          "name": "Bench Press"
        });
-       movie.save((err, movie) => {
+       movement.save((err, movement) => {
                chai.request(server)
-               .put('/api/movies/' + movie.id)
+               .put('/api/movement/' + movement.id)
                .send({"name": "Flat Bench Press"})
                .end((err, res) => {
                    res.should.have.status(200);
                    res.body.should.be.a('object');
-                   res.body.should.have.property('message').eql('Movie updated!');
-                   res.body.movie.should.have.property('genre').eql('horror');
+                   res.body.should.have.property('message').eql('Movement updated!');
+                   res.body.movement.should.have.property('name').eql('Flat Bench Press');
                  done();
                });
          });

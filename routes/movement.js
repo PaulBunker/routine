@@ -36,26 +36,28 @@ router.route('/')
 
 router.route('/:id')
 
-  // .put(function(req,res){
-  //   Movie.findOne({ _id: req.params.id }, function(err, movie) {
-  //     if (err) {
-  //       return res.send(err);
-  //     }
+  .put(function(req,res){
+    "use strict";
+    Movement.findOne({ _id: req.params.id }, function(err, movement) {
 
-  //     for (prop in req.body) {
-  //       movie[prop] = req.body[prop];
-  //     }
+      if (err) {
+        return res.send(err);
+      }
 
-  //     // save the movie
-  //     movie.save(function(err) {
-  //       if (err) {
-  //         return res.send(err);
-  //       }
+      for (let prop in req.body) {
+        movement[prop] = req.body[prop];
+      }
 
-  //       res.json({ message: 'Movie updated!', movie });
-  //     });
-  //   });
-  // })
+      // save the movement
+      movement.save(function(err) {
+        if (err) {
+          return res.send(err);
+        }
+
+        res.json({ message: 'Movement updated!', movement });
+      });
+    });
+  })
 
   .get(function(req, res) {
     "use strict";
