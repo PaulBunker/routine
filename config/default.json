@@ -1,4 +1,4 @@
 
 {
-	"DBHost": "YOUR_DB_URI"
+	"DBHost": "mongodb://localhost:27017/"
 }
