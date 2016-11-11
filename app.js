@@ -10,6 +10,9 @@ let config = require('config');
 // Routes
 let movement = require('./routes/movement');
 let workoutMovement = require('./routes/workoutMovement');
+let workout = require('./routes/workout');
+let session = require('./routes/session');
+
 
 //connect to our database
 //Ideally you will obtain DB details from a config file
@@ -41,6 +44,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/api/movement', movement);
 app.use('/api/workoutMovement', workoutMovement);
+app.use('/api/workout', workout);
+app.use('/api/session', session);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

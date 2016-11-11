@@ -1,0 +1,92 @@
+//Routine
+	workouts : [
+		{
+			workout_id:""
+		},
+		{
+			workout_id:""
+		},
+	]
+
+
+//Workout
+
+
+
+//Session
+{
+	_id:xxx,
+	workout_id:xxx,
+	date:Date()
+	movement [
+		{
+			name: Barbell Squat,
+			sets: [
+				{
+					weight:x,
+					reps:x,
+					warmup:false,
+				},{
+					weight:x,
+					reps:x,
+					warmup:false,
+				},{
+					weight:x,
+					reps:x,
+					warmup:false,
+				}
+			]
+		},
+		{
+			name: Leg Press,
+			sets: [
+				{
+					weight:x,
+					reps:x,
+					warmup:false,
+				},{
+					weight:x,
+					reps:x,
+					warmup:false,
+				},{
+					weight:x,
+					reps:x,
+					warmup:false,
+				}
+			]
+		},
+
+	]
+}
+
+movement
+	id
+	name
+
+workoutMovement
+	movement_id - id
+	numSets
+	repRange
+
+workout
+	id - id
+	name - string
+	workoutMovements - array of workoutMovements
+
+set
+	weight - number
+	reps - number
+	warmup - bool
+	assist - bool
+	order - number
+	date - Date()
+	workoutMovement_id
+	session_id
+
+
+session
+	workout - id
+	sets - arr
+	notes str
+
+

@@ -61,7 +61,9 @@ router.route('/:id')
 
   .get(function(req, res) {
     "use strict";
-    WorkoutMovement.findOne({ _id: req.params.id}, function(err, workoutMovement) {
+    WorkoutMovement.findOne({ _id: req.params.id})
+      .populate('movement')
+      .exec(function(err, workoutMovement) {
       if (err) {
         return res.send(err);
       }

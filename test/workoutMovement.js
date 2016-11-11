@@ -16,9 +16,12 @@ chai.use(chaiHttp);
 //Our parent block
 describe('WorkoutMovement', () => {
   "use strict";
+  //TODO: I don't like all this nesting. There must be a better way
   beforeEach((done) => { //Before each test we empty the database
     WorkoutMovement.remove({}, (err) => {
-     done();
+     Movement.remove({},(err) => {
+      done();
+     });
    });
   });
 
@@ -125,8 +128,11 @@ describe('WorkoutMovement', () => {
           .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
-            res.body.should.have.property('movement').eql(movement.id);
             res.body.should.have.property('_id').eql(workoutMovement.id);
+            res.body.should.have.property('movement');
+            res.body.movement.should.be.a('object');
+            res.body.movement.should.have.property('_id').eql(movement.id);
+
             done();
           });
         });
@@ -196,7 +202,5 @@ describe('WorkoutMovement', () => {
       });
      });
    });
-
-
 
 });
